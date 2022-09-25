@@ -6,7 +6,7 @@ public class Controller : MonoBehaviour
 {
     Rigidbody2D playerRigidbody;
     Balloon balloon;
-    float velocityHrizntl = 18;
+    float velocityHrizntl = 3;
     float velocityVrtikl = 4;
     // float gravity = -3;
     float timeToStop = 2;
@@ -39,28 +39,26 @@ public class Controller : MonoBehaviour
             if (balloon.balloonNumer == 2)
             {
                 playerRigidbody.drag = 3;
-                // if (y > -velocityVrtikl)
-                // {
-                //     --y;
-                // }
             }else if(balloon.balloonNumer == 1){
-                // if (y > -velocityVrtikl)
-                // {
-                //     y -= 2;
-                // }
                 playerRigidbody.drag = 1;
             }
         }
 
         if (Input.GetButton("Horizontal"))
         {
-            x = Input.GetAxis("Horizontal") * velocityHrizntl;
-            playerRigidbody.drag = 3;
-        }else{
-            if (Mathf.Abs(x) > 0)
+            if (Input.GetButton("Jump") && Input.GetButton("Horizontal"))
             {
-                // x-=3;
-                // playerRigidbody.drag = 3;
+                playerRigidbody.drag = 0;
+                x = Input.GetAxis("Horizontal") * velocityHrizntl;
+            }else
+            {
+                x = Input.GetAxis("Horizontal") * velocityHrizntl * 3;
+                if (balloon.balloonNumer == 2)
+                {
+                    playerRigidbody.drag = 3;
+                }else if(balloon.balloonNumer == 1){
+                    playerRigidbody.drag = 1;
+                }
             }
         }
         Vector3 move = transform.right * x + transform.up * y;
