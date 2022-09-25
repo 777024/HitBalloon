@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sutopilot : MonoBehaviour
+public class Autopilot : MonoBehaviour
 {
     double velocity = 0;
     // Start is called before the first frame update

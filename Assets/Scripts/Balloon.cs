@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    int ballonNumer = 0;
+    public int balloonNumer = 0;
     // Start is called before the first frame update
     void Start()
     {
         if (gameObject.tag == "Player"){
-            ballonNumer = 2;
+            balloonNumer = 2;
         }else if(gameObject.tag == "Enemy"){
-            ballonNumer = 1;
+            balloonNumer = 1;
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {
