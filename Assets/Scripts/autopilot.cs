@@ -19,7 +19,7 @@ public class Autopilot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(balloon.balloonNumer == 1){
             second -= Time.deltaTime;
