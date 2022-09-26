@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    public int balloonNumer = 0;
+    public int balloonNumer = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,9 @@ public class Balloon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (balloonNumer == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

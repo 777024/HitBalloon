@@ -52,11 +52,12 @@ public class Controller : MonoBehaviour
                 x = Input.GetAxis("Horizontal") * velocityHrizntl;
             }else
             {
-                x = Input.GetAxis("Horizontal") * velocityHrizntl * 3;
                 if (balloon.balloonNumer == 2)
                 {
+                    x = Input.GetAxis("Horizontal") * velocityHrizntl * 3;
                     playerRigidbody.drag = 3;
                 }else if(balloon.balloonNumer == 1){
+                    x = Input.GetAxis("Horizontal") * velocityHrizntl * 2;
                     playerRigidbody.drag = 1;
                 }
             }
