@@ -5,13 +5,16 @@ using UnityEngine;
 public class Balloon : MonoBehaviour
 {
     public int balloonNumer = 3;
+    string gameObjecttag;
     // Start is called before the first frame update
     void Start()
     {
         if (gameObject.tag == "Player"){
             balloonNumer = 2;
+            gameObjecttag = "Player";
         }else if(gameObject.tag == "Enemy"){
             balloonNumer = 1;
+            gameObjecttag = "Enemy";
         }
     }
     
@@ -20,7 +23,13 @@ public class Balloon : MonoBehaviour
     {
         if (balloonNumer == 0)
         {
-            Destroy(gameObject);
+            if(gameObjecttag == "Enemy"){
+                
+            }
+            if (gameObjecttag == "Player")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

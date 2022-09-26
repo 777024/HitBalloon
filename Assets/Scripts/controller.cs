@@ -38,7 +38,7 @@ public class Controller : MonoBehaviour
             y = -3;
             if (balloon.balloonNumer == 2)
             {
-                playerRigidbody.drag = 3;
+                playerRigidbody.drag = 2;
             }else if(balloon.balloonNumer == 1){
                 playerRigidbody.drag = 1;
             }
@@ -54,8 +54,8 @@ public class Controller : MonoBehaviour
             {
                 if (balloon.balloonNumer == 2)
                 {
-                    x = Input.GetAxis("Horizontal") * velocityHrizntl * 3;
-                    playerRigidbody.drag = 3;
+                    x = Input.GetAxis("Horizontal") * velocityHrizntl * 4;
+                    playerRigidbody.drag = 2;
                 }else if(balloon.balloonNumer == 1){
                     x = Input.GetAxis("Horizontal") * velocityHrizntl * 2;
                     playerRigidbody.drag = 1;
