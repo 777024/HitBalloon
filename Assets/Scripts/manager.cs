@@ -6,10 +6,11 @@ public class Manager : MonoBehaviour
 {
 
     GameObject[] enemies = null;
-    GameObject[] feet = null;
+    public GameObject[] feet = null;
     ArrayList feetTrigger = new ArrayList(5);
     public GameObject[] head = null;
     ArrayList headTrigger = new ArrayList(5);
+    public GameObject[] balloons = null;
     Vector3 enemyPos;
     Vector3 viewPosEnemy;
 
@@ -37,6 +38,7 @@ public class Manager : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         feet = GameObject.FindGameObjectsWithTag("Feet");
         head = GameObject.FindGameObjectsWithTag("Head");
+        balloons = GameObject.FindGameObjectsWithTag("Balloon");
 
 
         foreach (var item in feet)
@@ -105,10 +107,17 @@ public class Manager : MonoBehaviour
                 }
             }
 
-            // if (((BoxCollider2D)feet).IsTouching())
-            // {
-            //     // ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
-            // }
+            foreach (var balloon in balloons)
+            {
+                if ((BoxCollider2D)feet != null && balloon != null)
+                {
+                    if (((BoxCollider2D)feet).IsTouching(balloon.GetComponent<CircleCollider2D>()))
+                    {
+                        balloon.GetComponentInParent<Balloon>().balloonNumer -= 1;
+                        // Debug.Log("touch balloon");
+                    }
+                }
+            }
         }
     }
 }

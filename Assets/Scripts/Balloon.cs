@@ -59,7 +59,7 @@ public class Balloon : MonoBehaviour
         {
             if (gameObjecttag == "Enemy")
             {
-                gameObject.transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;//deactive head trigger
                 ((GameObject)ballon[0]).SetActive(true);
             }
 

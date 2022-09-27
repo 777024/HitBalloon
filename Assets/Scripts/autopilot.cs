@@ -14,7 +14,7 @@ public class Autopilot : MonoBehaviour
     {
         balloon = gameObject.AddComponent(typeof(Balloon)) as Balloon;
         enemyRigidbody = GetComponent<Rigidbody2D>();
-        enemyRigidbody.drag = 1;
+        enemyRigidbody.drag = 3;
         move = transform.up * velocity;
     }
 
@@ -27,12 +27,14 @@ public class Autopilot : MonoBehaviour
             {
                 if (Random.value > 0.5)
                 {
+                    enemyRigidbody.drag = 1;
                     for (float i = 0; i < 2; i += Time.deltaTime)
                     {
                         enemyRigidbody.AddForce(move);
                     }
                 }else{
                     second = 2;
+                    enemyRigidbody.drag = 3;
                 }
             }
         }

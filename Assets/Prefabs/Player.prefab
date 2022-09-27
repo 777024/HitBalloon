@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4059476931967760056}
   - component: {fileID: 6181020515188766446}
-  - component: {fileID: 2847005621847627729}
   - component: {fileID: 9018577682098628057}
   m_Layer: 0
   m_Name: Balloon
@@ -86,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2847005621847627729
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753955065090198754}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.00000047683716}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!58 &9018577682098628057
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -111,7 +94,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1753955065090198754}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: cd8800b896d00f3409bfa04d32bd1847, type: 2}
+  m_Material: {fileID: 6200000, guid: e22f69b1cbf7e1240bb7213ee4480a73, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -186,7 +169,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7136970770431770405}
   - component: {fileID: 2707464251911851436}
-  - component: {fileID: 7666501608497830348}
   - component: {fileID: 2873653170481035500}
   m_Layer: 0
   m_Name: Balloon (1)
@@ -262,22 +244,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7666501608497830348
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4095275587844393323}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!58 &2873653170481035500
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -287,7 +253,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4095275587844393323}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: cd8800b896d00f3409bfa04d32bd1847, type: 2}
+  m_Material: {fileID: 6200000, guid: e22f69b1cbf7e1240bb7213ee4480a73, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
