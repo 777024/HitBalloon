@@ -6,11 +6,11 @@ public class Manager : MonoBehaviour
 {
 
     GameObject[] enemies = null;
-    public GameObject[] feet = null;
+    GameObject[] feet = null;
     ArrayList feetTrigger = new ArrayList(5);
-    public GameObject[] head = null;
+    GameObject[] head = null;
     ArrayList headTrigger = new ArrayList(5);
-    public GameObject[] balloons = null;
+    GameObject[] balloons = null;
     Vector3 enemyPos;
     Vector3 viewPosEnemy;
 
@@ -27,6 +27,16 @@ public class Manager : MonoBehaviour
     //camera borders
     Vector3 leftBorder;
     Vector3 rightBorder;
+    Scene scene;
+
+    void StopGame()
+    {
+        Time.timeScale = 0;
+    }
+    void ChangeScene()
+    {
+        scene.Scene2();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +49,7 @@ public class Manager : MonoBehaviour
         feet = GameObject.FindGameObjectsWithTag("Feet");
         head = GameObject.FindGameObjectsWithTag("Head");
         balloons = GameObject.FindGameObjectsWithTag("Balloon");
-
+        scene = gameObject.AddComponent<Scene>();
 
         foreach (var item in feet)
         {
@@ -90,6 +100,7 @@ public class Manager : MonoBehaviour
                     enemy.transform.localPosition += 2 * leftBorder;
                 }
             }
+
         }
 
         foreach (var feet in feetTrigger)
@@ -120,5 +131,24 @@ public class Manager : MonoBehaviour
                 }
             }
         }
+
+        if (player.activeSelf == false)
+        {
+            Time.timeScale = 0;
+        }
+
+        if (enemies.Length == 5)
+        {
+            if (enemies[0].activeSelf == false &&
+            enemies[1].activeSelf == false &&
+            enemies[2].activeSelf == false &&
+            enemies[3].activeSelf == false &&
+            enemies[4].activeSelf == false)
+            {
+                ChangeScene();
+            }
+        }
+
     }
+
 }
