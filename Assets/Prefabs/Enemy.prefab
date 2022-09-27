@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 550401863081536205}
   m_Layer: 0
   m_Name: Feet
-  m_TagString: Untagged
+  m_TagString: Feet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 5697769738314766617}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

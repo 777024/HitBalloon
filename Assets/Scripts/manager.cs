@@ -5,28 +5,49 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    public GameObject[] Enemies = null;
+    GameObject[] enemies = null;
+    GameObject[] feet = null;
+    ArrayList feetTrigger = new ArrayList(5);
+    GameObject[] head = null;
+    ArrayList headTrigger = new ArrayList(5);
     Vector3 enemyPos;
     Vector3 viewPosEnemy;
 
 
     GameObject player;
+    GameObject playersHead;
+    GameObject playersFeet;
     Vector3 playerPos;
-
-
-    Camera cameraM;
     Vector3 viewPosPlayer;
 
 
+
+    Camera cameraM;
+    //camera borders
     Vector3 leftBorder;
     Vector3 rightBorder;
+
+    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         cameraM = Camera.main;
         leftBorder = new Vector3(cameraM.ViewportToWorldPoint(new Vector3(-0.03f, 0)).x, 0, 0);
         rightBorder = new Vector3(cameraM.ViewportToWorldPoint(new Vector3(1.03f, 0)).x, 0, 0);
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        feet = GameObject.FindGameObjectsWithTag("Feet");
+        head = GameObject.FindGameObjectsWithTag("Head");
+
+
+        foreach (var item in feet)
+        {
+            // BoxCollider2D test = item.GetComponent<BoxCollider2D>().IsTouching()
+            feetTrigger.Add(item.GetComponent<BoxCollider2D>());
+        }
+        foreach (var item in head)
+        {
+            headTrigger.Add(item.GetComponent<BoxCollider2D>());
+        }
     }
 
     // Update is called once per frame
@@ -50,7 +71,7 @@ public class Manager : MonoBehaviour
             }
         }
 
-        foreach (GameObject enemy in Enemies)
+        foreach (GameObject enemy in enemies)
         {
             if (enemy != null)
             {
@@ -64,6 +85,21 @@ public class Manager : MonoBehaviour
                 {
                     // Debug.Log("Enemy out");
                     enemy.transform.localPosition += 2 * leftBorder;
+                }
+            }
+        }
+
+        foreach (var feet in feetTrigger)
+        {
+            foreach (var head in headTrigger)
+            {
+                if ((BoxCollider2D)feet != null && (BoxCollider2D)head != null)
+                {
+                    if (((BoxCollider2D)feet).IsTouching((BoxCollider2D)head))
+                    {
+                        // Debug.Log("feet on head");
+                        ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
+                    }
                 }
             }
         }
