@@ -6,9 +6,9 @@ public class Autopilot : MonoBehaviour
 {
     Rigidbody2D enemyRigidbody;
     Balloon balloon;
-    float velocity = 3;
+    float velocity = 2;
     Vector3 move;
-    float second;
+    float second = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,22 +21,18 @@ public class Autopilot : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(balloon.balloonNumer == 1){
+        if (balloon.balloonNumer == 1)
+        {
             second -= Time.deltaTime;
-            if (second < 0)
+            if (second < 0 && second > -2)
             {
-                if (Random.value > 0.5)
-                {
-                    enemyRigidbody.drag = 1;
-                    for (float i = 0; i < 2; i += Time.deltaTime)
-                    {
-                        enemyRigidbody.AddForce(move);
-                    }
-                }else{
-                    second = 2;
-                    enemyRigidbody.drag = 3;
-                }
+                enemyRigidbody.velocity = move;
             }
+            else if(second < -2)
+            {
+                second = 2;
+            }
+                // enemyRigidbody.velocity = 0 * transform.up;
         }
     }
 }

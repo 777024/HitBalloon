@@ -345,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3375244926973349535, guid: 2a3e0bda1e4ce824a8638d63dd8204c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.27
+      value: 5.53
       objectReference: {fileID: 0}
     - target: {fileID: 3375244926973349535, guid: 2a3e0bda1e4ce824a8638d63dd8204c8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -680,6 +680,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4500820111124615901, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
+      propertyPath: m_Mass
+      value: 0.32068583
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820111124615901, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
 --- !u!4 &646061019 stripped
@@ -933,6 +941,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5222140610952015104, guid: 5f0505af119354c48815d45e89726910, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8241363061109218168, guid: 5f0505af119354c48815d45e89726910, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1102,6 +1114,10 @@ PrefabInstance:
     - target: {fileID: 3656645796429706511, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820111124615901, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
+      propertyPath: m_Mass
+      value: 0.32068583
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
@@ -1354,7 +1370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556510629742524469120857a937ba4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feet: []
   head: []
+  balloons: []
 --- !u!4 &1282839202
 Transform:
   m_ObjectHideFlags: 0
@@ -1515,6 +1533,10 @@ PrefabInstance:
     - target: {fileID: 3656645796429706511, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820111124615901, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
+      propertyPath: m_Mass
+      value: 0.32068583
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
@@ -1726,6 +1748,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4500820111124615901, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
+      propertyPath: m_Mass
+      value: 0.32068583
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820111124615901, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae8a76a0558da749b561bbf661876ca, type: 3}
 --- !u!4 &2065419975 stripped
@@ -1884,7 +1914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3375244926973349535, guid: 2a3e0bda1e4ce824a8638d63dd8204c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.17
+      value: -6.01
       objectReference: {fileID: 0}
     - target: {fileID: 3375244926973349535, guid: 2a3e0bda1e4ce824a8638d63dd8204c8, type: 3}
       propertyPath: m_LocalPosition.y
