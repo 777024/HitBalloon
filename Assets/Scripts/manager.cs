@@ -102,7 +102,8 @@ public class Manager : MonoBehaviour
                     {
                         // Debug.Log("feet on head");
                         // ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
-                        Destroy(((BoxCollider2D)head).transform.parent.gameObject);
+                        // Destroy(((BoxCollider2D)head).transform.parent.gameObject);
+                        ((BoxCollider2D)head).transform.parent.gameObject.SetActive(false);
                     }
                 }
             }

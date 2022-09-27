@@ -23,7 +23,8 @@ public class FishKill : MonoBehaviour
         place = intoWater.transform.position;
         // Debug.Log(place);
         // fish = GameObject.Instantiate(fish);
-        Destroy(intoWater);
+        // Destroy(intoWater);
+        intoWater.SetActive(false);
         fish.transform.position = place;
     }
     // Update is called once per frame

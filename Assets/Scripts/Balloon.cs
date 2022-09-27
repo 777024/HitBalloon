@@ -47,7 +47,7 @@ public class Balloon : MonoBehaviour
             }
             else if (gameObjecttag == "Player")
             {
-                Destroy(gameObject);//no balloon sudden death
+                gameObject.SetActive(false);//no balloon sudden death
                 // Debug.Log(gameObject.transform.GetChild(1).gameObject);
             }
         }
