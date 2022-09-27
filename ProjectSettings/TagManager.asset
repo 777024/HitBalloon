@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Feet
+  - Head
+  - Balloon
   layers:
   - Default
   - TransparentFX

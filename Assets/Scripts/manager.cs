@@ -8,7 +8,7 @@ public class Manager : MonoBehaviour
     GameObject[] enemies = null;
     GameObject[] feet = null;
     ArrayList feetTrigger = new ArrayList(5);
-    GameObject[] head = null;
+    public GameObject[] head = null;
     ArrayList headTrigger = new ArrayList(5);
     Vector3 enemyPos;
     Vector3 viewPosEnemy;
@@ -48,6 +48,7 @@ public class Manager : MonoBehaviour
         {
             headTrigger.Add(item.GetComponent<BoxCollider2D>());
         }
+
     }
 
     // Update is called once per frame
@@ -98,10 +99,16 @@ public class Manager : MonoBehaviour
                     if (((BoxCollider2D)feet).IsTouching((BoxCollider2D)head))
                     {
                         // Debug.Log("feet on head");
-                        ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
+                        // ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
+                        Destroy(((BoxCollider2D)head).transform.parent);
                     }
                 }
             }
+
+            // if (((BoxCollider2D)feet).IsTouching())
+            // {
+            //     // ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
+            // }
         }
     }
 }
