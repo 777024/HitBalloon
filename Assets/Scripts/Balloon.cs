@@ -17,14 +17,14 @@ public class Balloon : MonoBehaviour
             gameObjecttag = "Player";
             for (int i = 2; i < 4; i++)
             {
-                ballon.Add(gameObject.transform.GetChild(i));
+                ballon.Add(gameObject.transform.GetChild(i).gameObject);
             }
         }
         else if (gameObject.tag == "Enemy")
         {
             balloonNumer = 0;
             gameObjecttag = "Enemy";
-            ballon.Add(gameObject.transform.GetChild(2));
+            ballon.Add(gameObject.transform.GetChild(2).gameObject);
         }
         
     }
