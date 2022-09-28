@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Scene : MonoBehaviour
 {
-    
     public void Scene1(){
         SceneManager.LoadScene(0);
         System.GC.Collect();

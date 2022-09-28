@@ -28,16 +28,7 @@ public class Manager : MonoBehaviour
     Vector3 leftBorder;
     Vector3 rightBorder;
     Scene scene;
-
-    void StopGame()
-    {
-        Time.timeScale = 0;
-    }
-    void ChangeScene()
-    {
-        scene.Scene2();
-    }
-
+    BalloonPool balloonPool;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,10 +41,10 @@ public class Manager : MonoBehaviour
         head = GameObject.FindGameObjectsWithTag("Head");
         balloons = GameObject.FindGameObjectsWithTag("Balloon");
         scene = gameObject.AddComponent<Scene>();
+        balloonPool = GameObject.Find("BalloonPool").GetComponent<BalloonPool>();
 
         foreach (var item in feet)
         {
-            // BoxCollider2D test = item.GetComponent<BoxCollider2D>().IsTouching()
             feetTrigger.Add(item.GetComponent<BoxCollider2D>());
         }
         foreach (var item in head)
@@ -63,8 +54,7 @@ public class Manager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void PlayerViewPosDetect()
     {
         if (player != null)
         {
@@ -72,18 +62,16 @@ public class Manager : MonoBehaviour
             viewPosPlayer = cameraM.WorldToViewportPoint(playerPos);
             if (viewPosPlayer.x < -0.03)
             {
-                // Debug.Log("out");
-                // Destroy(player);
                 player.transform.localPosition += 2 * rightBorder;
             }
             else if (viewPosPlayer.x > 1.03)
             {
-                // Debug.Log("out");
-                // Destroy(player);
                 player.transform.localPosition += 2 * leftBorder;
             }
         }
-
+    }
+    void EnemyViewPosDetect()
+    {
         foreach (GameObject enemy in enemies)
         {
             if (enemy != null)
@@ -96,13 +84,15 @@ public class Manager : MonoBehaviour
                 }
                 else if (viewPosEnemy.x > 1.03)
                 {
-                    // Debug.Log("Enemy out");
                     enemy.transform.localPosition += 2 * leftBorder;
                 }
             }
-
         }
+    }
 
+
+    void FeetTouchBalloonOrHeadDetect()
+    {
         foreach (var feet in feetTrigger)
         {
             foreach (var head in headTrigger)
@@ -131,12 +121,18 @@ public class Manager : MonoBehaviour
                 }
             }
         }
+    }
 
+    void PlayerDie()
+    {
         if (player.activeSelf == false)
         {
             Time.timeScale = 0;
         }
+    }
 
+    void LevelClear()
+    {
         if (enemies.Length == 5)
         {
             if (enemies[0].activeSelf == false &&
@@ -145,10 +141,29 @@ public class Manager : MonoBehaviour
             enemies[3].activeSelf == false &&
             enemies[4].activeSelf == false)
             {
-                ChangeScene();
+                scene.Scene2();
             }
         }
+    }
 
+    void addBalloonsToScene()
+    {//get a balloon from pool
+     //balloon goes up
+     //if player touch balloon
+     //send it back to the pool
+        
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        PlayerViewPosDetect();
+        EnemyViewPosDetect();
+        FeetTouchBalloonOrHeadDetect();
+
+        PlayerDie();
+        LevelClear();
     }
 
 }
