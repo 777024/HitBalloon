@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scene : MonoBehaviour
+public class SceneChange : MonoBehaviour
 {
     public void Scene1(){
         SceneManager.LoadScene(0);
@@ -16,4 +16,5 @@ public class Scene : MonoBehaviour
         System.GC.Collect();
         Time.timeScale = 1;
     }
+
 }

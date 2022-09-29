@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -27,13 +28,13 @@ public class Manager : MonoBehaviour
     //camera borders
     Vector3 leftBorder;
     Vector3 rightBorder;
-    Scene scene;
+    SceneChange scene;
     BalloonPool balloonPool;
     private List<GameObject> balloonList = new List<GameObject>();
     int balloonCounter = 0;
+    // bool changeSceneFlag = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = GameObject.Find("Player");
         cameraM = Camera.main;
@@ -43,10 +44,9 @@ public class Manager : MonoBehaviour
         feet = GameObject.FindGameObjectsWithTag("Feet");
         head = GameObject.FindGameObjectsWithTag("Head");
         balloons = GameObject.FindGameObjectsWithTag("Balloon");
-        scene = gameObject.AddComponent<Scene>();
+        scene = gameObject.AddComponent<SceneChange>();
         balloonPool = gameObject.GetComponent<BalloonPool>();
-        GetBalloons();
-        balloonCounter = balloonList.Count - 1;
+
         foreach (var item in feet)
         {
             feetTrigger.Add(item.GetComponent<BoxCollider2D>());
@@ -56,10 +56,29 @@ public class Manager : MonoBehaviour
             headTrigger.Add(item.GetComponent<BoxCollider2D>());
         }
 
-        InvokeRepeating("AddBalloonsToScene", 2, 4);
-        Invoke("ReturnBalloons" , 90);
+        
+    }
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded; 
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        if (scene.name == "Scene2")
+        {
+            Debug.Log("qwewqe");
+            GetBalloons();
+            balloonCounter = balloonList.Count - 1;
+            // changeSceneFlag = true;
+            InvokeRepeating("AddBalloonsToScene", 2, 4);
+            Invoke("ReturnBalloons" , 90);
+        }
+        
+    }
+
+
+    private void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     void PlayerViewPosDetect()
     {
         if (player != null)
@@ -231,7 +250,7 @@ public class Manager : MonoBehaviour
 
         PlayerDie();
         LevelClear();
-        
+ 
     }
 
 }
