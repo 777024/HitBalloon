@@ -29,6 +29,8 @@ public class Manager : MonoBehaviour
     Vector3 rightBorder;
     Scene scene;
     BalloonPool balloonPool;
+    private List<GameObject> balloonList = new List<GameObject>();
+    int balloonCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +43,9 @@ public class Manager : MonoBehaviour
         head = GameObject.FindGameObjectsWithTag("Head");
         balloons = GameObject.FindGameObjectsWithTag("Balloon");
         scene = gameObject.AddComponent<Scene>();
-        balloonPool = GameObject.Find("BalloonPool").GetComponent<BalloonPool>();
-
+        balloonPool = gameObject.GetComponent<BalloonPool>();
+        GetBalloons();
+        balloonCounter = balloonList.Count - 1;
         foreach (var item in feet)
         {
             feetTrigger.Add(item.GetComponent<BoxCollider2D>());
@@ -52,6 +55,8 @@ public class Manager : MonoBehaviour
             headTrigger.Add(item.GetComponent<BoxCollider2D>());
         }
 
+        InvokeRepeating("AddBalloonsToScene", 2, 4);
+        // InvokeRepeating("DetectBalloonsInScene", 0, 10);
     }
 
     void PlayerViewPosDetect()
@@ -89,7 +94,6 @@ public class Manager : MonoBehaviour
             }
         }
     }
-
 
     void FeetTouchBalloonOrHeadDetect()
     {
@@ -146,24 +150,92 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void addBalloonsToScene()
+    void AddBalloonsToScene()
     {//get a balloon from pool
      //balloon goes up
-     //if player touch balloon
-     //send it back to the pool
-        
+     // x of four pipes -3.805762  1.19 5.81 11.25  
+        if (balloonCounter > 0)
+        {
+            var balloon = balloonList[balloonCounter];
+            var randomNumber = Random.value;
+            if (randomNumber < 0.25)
+            {
+                BalloonChangePosition(1, balloon);
+                --balloonCounter;
+            }
+            else if (randomNumber < 0.5)
+            {
+                BalloonChangePosition(2, balloon);
+                --balloonCounter;
+            }
+            else if (randomNumber < 0.75)
+            {
+                BalloonChangePosition(3, balloon);
+                --balloonCounter;
+            }
+            else if (randomNumber < 1)
+            {
+                BalloonChangePosition(4, balloon);
+                --balloonCounter;
+            }
+        }
+
 
     }
 
+    void BalloonChangePosition(int pipe, GameObject balloon)
+    {
+        if (pipe == 1)
+        {
+            balloon.transform.position = Vector3.right * -7.0999999f + Vector3.up * -3.25529f;
+        }
+        if (pipe == 2)
+        {
+            balloon.transform.position = Vector3.right * -2.10423779f + Vector3.up * -3.805297f;
+        }
+        if (pipe == 3)
+        {
+            balloon.transform.position = Vector3.right * 2.51576209f + Vector3.up * -3.025297f;
+        }
+        if (pipe == 4)
+        {
+            balloon.transform.position = Vector3.right * 7.9557619f + Vector3.up * -3.585297f;
+        }
+    }
+    void DetectBalloonsInScene()
+    {
+
+    }
+
+    private void GetBalloons()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            var obj = balloonPool.GetInstance();
+            obj.transform.SetParent(gameObject.transform);
+            balloonList.Add(obj);
+        }
+    }
+    private void ReturnBalloons()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            balloonPool.ReturnInstance(balloonList[i]);
+        }
+        balloonList.Clear();
+    }
     // Update is called once per frame
     void Update()
     {
+
         PlayerViewPosDetect();
         EnemyViewPosDetect();
         FeetTouchBalloonOrHeadDetect();
 
         PlayerDie();
         LevelClear();
+        
+        // DetectBalloonsInScene();
     }
 
 }

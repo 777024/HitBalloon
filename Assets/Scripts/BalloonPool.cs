@@ -16,17 +16,13 @@ public class BalloonPool : MonoBehaviour
             reusableInstance.SetActive(true);
             return reusableInstance;
         }
-        return Instantiate(balloon);
+        return Instantiate(balloon) as GameObject;
     }
 
-    public void SendInstanceToPool(GameObject gameObjectToPool){
+    public void ReturnInstance(GameObject gameObjectToPool){
         instanceQueuePool.Enqueue(gameObjectToPool);
         gameObjectToPool.SetActive(false);
         gameObjectToPool.transform.SetParent(gameObject.transform);
     }
     
-    private void Start() {
-        GameObject balloon = GameObject.Find("ScoreBalloon");
-        SendInstanceToPool(balloon);
-    }
 }

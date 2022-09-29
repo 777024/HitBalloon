@@ -9,6 +9,7 @@ TagManager:
   - Feet
   - Head
   - Balloon
+  - BalloonPool
   layers:
   - Default
   - TransparentFX
