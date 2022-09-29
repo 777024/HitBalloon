@@ -31,6 +31,7 @@ public class Manager : MonoBehaviour
     BalloonPool balloonPool;
     private List<GameObject> balloonList = new List<GameObject>();
     int balloonCounter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,7 @@ public class Manager : MonoBehaviour
         }
 
         InvokeRepeating("AddBalloonsToScene", 2, 4);
-        // InvokeRepeating("DetectBalloonsInScene", 0, 10);
+        Invoke("ReturnBalloons" , 90);
     }
 
     void PlayerViewPosDetect()
@@ -202,10 +203,6 @@ public class Manager : MonoBehaviour
             balloon.transform.position = Vector3.right * 7.9557619f + Vector3.up * -3.585297f;
         }
     }
-    void DetectBalloonsInScene()
-    {
-
-    }
 
     private void GetBalloons()
     {
@@ -235,7 +232,6 @@ public class Manager : MonoBehaviour
         PlayerDie();
         LevelClear();
         
-        // DetectBalloonsInScene();
     }
 
 }

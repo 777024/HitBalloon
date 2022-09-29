@@ -11,10 +11,10 @@ public class BalloonScore : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-       
+        
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         rigidbody2d.velocity =new Vector3(0, 3, 0);
