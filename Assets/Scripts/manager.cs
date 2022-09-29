@@ -65,7 +65,7 @@ public class Manager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         if (scene.name == "Scene2")
         {
-            Debug.Log("qwewqe");
+            // Debug.Log("qwewqe");
             GetBalloons();
             balloonCounter = balloonList.Count - 1;
             // changeSceneFlag = true;
