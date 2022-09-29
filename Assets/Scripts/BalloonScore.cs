@@ -19,11 +19,17 @@ public class BalloonScore : MonoBehaviour
     if (other.gameObject.name == "Player")
     {
         gameObject.SetActive(false);
+        ScorePlus300();
     }
    }
     void FixedUpdate()
     {
         rigidbody2d.velocity =new Vector3(0, 3, 0);
 
+    }
+
+    void ScorePlus300() {
+        Manager.score += 300;
+        Manager.text.text = "Score : " + Manager.score;
     }
 }

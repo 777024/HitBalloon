@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class Manager : MonoBehaviour
     int balloonCounter = 0;
     // bool changeSceneFlag = false;
 
+    public static Text text;
+    public static int score = 0;
+
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -46,6 +50,7 @@ public class Manager : MonoBehaviour
         balloons = GameObject.FindGameObjectsWithTag("Balloon");
         scene = gameObject.AddComponent<SceneChange>();
         balloonPool = gameObject.GetComponent<BalloonPool>();
+        text = GameObject.Find("Score").GetComponent<Text>();
 
         foreach (var item in feet)
         {
@@ -71,11 +76,22 @@ public class Manager : MonoBehaviour
             // changeSceneFlag = true;
             InvokeRepeating("AddBalloonsToScene", 2, 4);
             Invoke("ReturnBalloons" , 90);
+            ScoreFlush();
         }
         
     }
 
-
+    void ScoreFlush(){
+        text.text = "Score : " + score;
+    }
+    void ScorePlus500() {
+        score += 500;
+        text.text = "Score : " + score;
+    }
+    void ScorePlus750(){
+        score += 750;
+        text.text = "Score : " + score;
+    }
     private void OnDisable() {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -129,6 +145,7 @@ public class Manager : MonoBehaviour
                         // ((BoxCollider2D)head).GetComponentInParent<Balloon>().balloonNumer -= 1;
                         // Destroy(((BoxCollider2D)head).transform.parent.gameObject);
                         ((BoxCollider2D)head).transform.parent.gameObject.SetActive(false);
+                        ScorePlus750();
                     }
                 }
             }
@@ -140,6 +157,7 @@ public class Manager : MonoBehaviour
                     if (((BoxCollider2D)feet).IsTouching(balloon.GetComponent<CircleCollider2D>()))
                     {
                         balloon.GetComponentInParent<Balloon>().balloonNumer -= 1;
+                        ScorePlus500();
                         // Debug.Log("touch balloon");
                     }
                 }
@@ -239,6 +257,7 @@ public class Manager : MonoBehaviour
             balloonPool.ReturnInstance(balloonList[i]);
         }
         balloonList.Clear();
+        Time.timeScale = 0;
     }
     // Update is called once per frame
     void Update()
@@ -250,7 +269,7 @@ public class Manager : MonoBehaviour
 
         PlayerDie();
         LevelClear();
- 
+  
     }
 
 }

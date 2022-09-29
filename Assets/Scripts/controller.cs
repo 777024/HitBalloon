@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    // public delegate void PlayerScore(int tmp);
+    // public event PlayerScore GetScore;
     Rigidbody2D playerRigidbody;
     Balloon balloon;
     float velocityHrizntl = 3;
