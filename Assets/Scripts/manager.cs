@@ -40,6 +40,7 @@ public class Manager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 30;
         player = GameObject.Find("Player");
         cameraM = Camera.main;
         leftBorder = new Vector3(cameraM.ViewportToWorldPoint(new Vector3(-0.03f, 0)).x, 0, 0);
